@@ -24,8 +24,7 @@ func main() {
 	for {
 		select {
 		case t := <-tc.C:
-			fmt.Printf("\033[1A\033[K")
-			fmt.Printf("\033[33m%s remaining\033[0m\n", t.Sub(end).Abs().Truncate(time.Second))
+			fmt.Printf("\033[1A\033[K\033[33m%s remaining\033[0m\n", t.Sub(end).Abs().Truncate(time.Second))
 		case <-stop.C:
 			fmt.Printf("\033[1A\033[K")
 			tc.Stop()
